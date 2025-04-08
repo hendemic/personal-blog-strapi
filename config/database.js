@@ -2,7 +2,7 @@ module.exports = ({ env }) => ({
     connection: {
         client: 'postgres',
         connection: {
-            connectionString: env('DATABASE_PRIVATE_URL')
+            connectionString: env('DATABASE_URL')
         },
         pool: { min: 0 }
     }

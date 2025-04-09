@@ -393,6 +393,41 @@ export interface ApiLandingPageLandingPage extends Schema.SingleType {
   };
 }
 
+export interface ApiPostPost extends Schema.CollectionType {
+  collectionName: 'posts';
+  info: {
+    description: '';
+    displayName: 'Post';
+    pluralName: 'posts';
+    singularName: 'post';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Attribute.DynamicZone<
+      [
+        'content-block.text-block',
+        'content-block.media-grid',
+        'content-block.image-block',
+        'content-block.heading-block'
+      ]
+    >;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    description: Attribute.Text;
+    publishDate: Attribute.Date;
+    publishedAt: Attribute.DateTime;
+    seo: Attribute.Component<'utility.seo'>;
+    slug: Attribute.UID<'api::post.post', 'title'>;
+    title: Attribute.String;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease extends Schema.CollectionType {
   collectionName: 'strapi_releases';
   info: {
@@ -830,6 +865,7 @@ declare module '@strapi/types' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::landing-page.landing-page': ApiLandingPageLandingPage;
+      'api::post.post': ApiPostPost;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

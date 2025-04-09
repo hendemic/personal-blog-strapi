@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_collection_media_collections",
+  "info": {
+    "displayName": "Media Collection",
+    "icon": "server"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "altText": {
+      "type": "string",
+      "required": true
+    },
+    "caption": {
+      "type": "string"
+    }
+  }
+}

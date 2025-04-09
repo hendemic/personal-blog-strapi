@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_content_block_media_grids",
+  "info": {
+    "displayName": "Media Grid",
+    "icon": "picture"
+  },
+  "options": {},
+  "attributes": {
+    "images": {
+      "displayName": "Media Collection",
+      "type": "component",
+      "repeatable": true,
+      "component": "collection.media-collection"
+    },
+    "displayType": {
+      "type": "enumeration",
+      "enum": [
+        "carousel"
+      ]
+    }
+  }
+}

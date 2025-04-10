@@ -1,14 +1,30 @@
 module.exports = [
   "strapi::errors",
   {
-    name: "strapi::security",
+    name: 'strapi::security',
     config: {
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          "connect-src": ["'self'", "https:"],
-          "img-src": ["'self'", "data:", "blob:", "res.cloudinary.com"],
-          "media-src": ["'self'", "data:", "blob:", "res.cloudinary.com"],
+          'connect-src': ["'self'", 'https:'],
+          'img-src': [
+            "'self'",
+            'data:',
+            'blob:',
+            'dl.airtable.com',
+            'mrh-strapi-blog.nyc3.digitaloceanspaces.com',
+            'mrh-strapi-blog.nyc3.cdn.digitaloceanspaces.com',
+            '*.digitaloceanspaces.com',
+          ],
+          'media-src': [
+            "'self'",
+            'data:',
+            'blob:',
+            'dl.airtable.com',
+            'mrh-strapi-blog.nyc3.digitaloceanspaces.com',
+            'mrh-strapi-blog.nyc3.cdn.digitaloceanspaces.com',
+            '*.digitaloceanspaces.com',
+          ],
           upgradeInsecureRequests: null,
         },
       },

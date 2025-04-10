@@ -6,14 +6,26 @@ module.exports = ({ env }) => ({
   },
   upload: {
     config: {
-      provider: 'cloudinary',
+      provider: "aws-s3",
       providerOptions: {
-        cloud_name: env('CLOUDINARY_NAME'),
-        api_key: env('CLOUDINARY_KEY'),
-        api_secret: env('CLOUDINARY_SECRET'),
+        s3Options: {
+          credentials: {
+            accessKeyId: env('DO_SPACE_ACCESS_KEY'),
+            secretAccessKey: env('DO_SPACE_SECRET_KEY'),
+          },
+          endpoint: env('DO_SPACE_ENDPOINT'),
+          region: env('DO_SPACE_REGION'),
+          params: {
+            Bucket: env('DO_SPACE_BUCKET'),
+            ACL: 'public-read',
+          },
+        },
+        baseUrl: env('DO_SPACE_BASE_URL'),
+        uploadDir: '',
       },
       actionOptions: {
         upload: {},
+        uploadStream: {},
         delete: {},
       },
     },

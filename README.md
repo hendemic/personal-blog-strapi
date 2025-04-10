@@ -13,7 +13,7 @@ This example deploys self-hosted version of [Strapi](https://strapi.io/). Intern
 
 - Click the Railway button 👆
 - Add the environment variables
-  - If you choose not to add the Cloudinary related environment variables, your media will not be persisted between deploys.
+  - Media storage is configured to use Digital Ocean Spaces (S3-compatible storage).
 
 ## 💻 Developing locally
 
@@ -34,5 +34,12 @@ When developing locally this Strapi template will connect to the Postgres server
 ## 📝 Notes
 
 - After your app is deployed, visit the `/admin` endpoint to create your admin user.
-- Railway's filesystem is ephemeral which is why any changes to the filesystem are not persisted between deploys. This is why, this template uses Cloudinary for media storage.
+- Railway's filesystem is ephemeral which is why any changes to the filesystem are not persisted between deploys. This is why, this project uses Digital Ocean Spaces for media storage.
+- Required environment variables for Digital Ocean Spaces:
+  - `DO_SPACE_ACCESS_KEY` - Digital Ocean Spaces access key
+  - `DO_SPACE_SECRET_KEY` - Digital Ocean Spaces secret key
+  - `DO_SPACE_ENDPOINT` - Digital Ocean Spaces endpoint (e.g., 'nyc3.digitaloceanspaces.com')
+  - `DO_SPACE_BUCKET` - Digital Ocean Spaces bucket name
+  - `DO_SPACE_REGION` - Digital Ocean Spaces region (e.g., 'nyc3')
+  - `DO_SPACE_BASE_URL` - (Optional) CDN URL if configured
 - If you want to use npm with this project make sure you delete the `yarn.lock` file after you have ran `npm install`

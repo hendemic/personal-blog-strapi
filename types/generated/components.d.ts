@@ -1,39 +1,40 @@
 import type { Attribute, Schema } from '@strapi/strapi';
 
-export interface CollectionMediaCollection extends Schema.Component {
-  collectionName: 'components_collection_media_collections';
+export interface CollectionsAlbum extends Schema.Component {
+  collectionName: 'components_collections_albums';
   info: {
-    displayName: 'Media Collection';
-    icon: 'server';
+    displayName: 'Album';
+    icon: 'grid';
   };
   attributes: {
-    altText: Attribute.String & Attribute.Required;
     caption: Attribute.String;
-    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
-      Attribute.Required;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 
 export interface ContentBlockHeadingBlock extends Schema.Component {
   collectionName: 'components_content_block_heading_blocks';
   info: {
+    description: '';
     displayName: 'Heading Block';
     icon: 'write';
   };
   attributes: {
-    heading: Attribute.String;
-    level: Attribute.Enumeration<['h1', 'h2', 'h3']>;
+    heading: Attribute.String & Attribute.Required;
+    level: Attribute.Enumeration<['h2', 'h3', 'h4']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'h2'>;
   };
 }
 
 export interface ContentBlockImageBlock extends Schema.Component {
   collectionName: 'components_content_block_image_blocks';
   info: {
+    description: '';
     displayName: 'Image Block';
     icon: 'picture';
   };
   attributes: {
-    altText: Attribute.String;
     caption: Attribute.String;
     image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
@@ -42,12 +43,15 @@ export interface ContentBlockImageBlock extends Schema.Component {
 export interface ContentBlockMediaGrid extends Schema.Component {
   collectionName: 'components_content_block_media_grids';
   info: {
+    description: '';
     displayName: 'Media Grid';
     icon: 'picture';
   };
   attributes: {
-    displayType: Attribute.Enumeration<['carousel']>;
-    images: Attribute.Component<'collection.media-collection', true>;
+    displayType: Attribute.Enumeration<['carousel']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'carousel'>;
+    images: Attribute.Component<'collections.album', true>;
   };
 }
 
@@ -79,7 +83,7 @@ export interface UtilitySeo extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'collection.media-collection': CollectionMediaCollection;
+      'collections.album': CollectionsAlbum;
       'content-block.heading-block': ContentBlockHeadingBlock;
       'content-block.image-block': ContentBlockImageBlock;
       'content-block.media-grid': ContentBlockMediaGrid;

@@ -2,20 +2,24 @@
   "collectionName": "components_content_block_heading_blocks",
   "info": {
     "displayName": "Heading Block",
-    "icon": "write"
+    "icon": "write",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "heading": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "level": {
       "type": "enumeration",
       "enum": [
-        "h1",
         "h2",
-        "h3"
-      ]
+        "h3",
+        "h4"
+      ],
+      "default": "h2",
+      "required": true
     }
   }
 }

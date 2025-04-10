@@ -2,21 +2,24 @@
   "collectionName": "components_content_block_media_grids",
   "info": {
     "displayName": "Media Grid",
-    "icon": "picture"
+    "icon": "picture",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "images": {
-      "displayName": "Media Collection",
-      "type": "component",
-      "repeatable": true,
-      "component": "collection.media-collection"
-    },
     "displayType": {
       "type": "enumeration",
       "enum": [
         "carousel"
-      ]
+      ],
+      "default": "carousel",
+      "required": true
+    },
+    "images": {
+      "displayName": "Album",
+      "type": "component",
+      "repeatable": true,
+      "component": "collections.album"
     }
   }
 }

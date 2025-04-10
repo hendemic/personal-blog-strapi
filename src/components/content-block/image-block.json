@@ -2,24 +2,23 @@
   "collectionName": "components_content_block_image_blocks",
   "info": {
     "displayName": "Image Block",
-    "icon": "picture"
+    "icon": "picture",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "caption": {
-      "type": "string"
-    },
-    "altText": {
       "type": "string"
     }
   }

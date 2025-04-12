@@ -1,18 +1,18 @@
-import type { Attribute, Schema } from '@strapi/strapi';
+import type { Schema, Struct } from '@strapi/strapi';
 
-export interface CollectionsAlbum extends Schema.Component {
+export interface CollectionsAlbum extends Struct.ComponentSchema {
   collectionName: 'components_collections_albums';
   info: {
     displayName: 'Album';
     icon: 'grid';
   };
   attributes: {
-    caption: Attribute.String;
-    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    caption: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 
-export interface ContentBlockHeadingBlock extends Schema.Component {
+export interface ContentBlockHeadingBlock extends Struct.ComponentSchema {
   collectionName: 'components_content_block_heading_blocks';
   info: {
     description: '';
@@ -20,14 +20,14 @@ export interface ContentBlockHeadingBlock extends Schema.Component {
     icon: 'write';
   };
   attributes: {
-    heading: Attribute.String & Attribute.Required;
-    level: Attribute.Enumeration<['h2', 'h3', 'h4']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'h2'>;
+    heading: Schema.Attribute.String & Schema.Attribute.Required;
+    level: Schema.Attribute.Enumeration<['h2', 'h3', 'h4']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'h2'>;
   };
 }
 
-export interface ContentBlockImageBlock extends Schema.Component {
+export interface ContentBlockImageBlock extends Struct.ComponentSchema {
   collectionName: 'components_content_block_image_blocks';
   info: {
     description: '';
@@ -35,12 +35,12 @@ export interface ContentBlockImageBlock extends Schema.Component {
     icon: 'picture';
   };
   attributes: {
-    caption: Attribute.String;
-    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    caption: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 
-export interface ContentBlockMediaGrid extends Schema.Component {
+export interface ContentBlockMediaGrid extends Struct.ComponentSchema {
   collectionName: 'components_content_block_media_grids';
   info: {
     description: '';
@@ -48,14 +48,14 @@ export interface ContentBlockMediaGrid extends Schema.Component {
     icon: 'picture';
   };
   attributes: {
-    displayType: Attribute.Enumeration<['carousel']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'carousel'>;
-    images: Attribute.Component<'collections.album', true>;
+    displayType: Schema.Attribute.Enumeration<['carousel']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'carousel'>;
+    images: Schema.Attribute.Component<'collections.album', true>;
   };
 }
 
-export interface ContentBlockTextBlock extends Schema.Component {
+export interface ContentBlockTextBlock extends Struct.ComponentSchema {
   collectionName: 'components_text_block_text_blocks';
   info: {
     description: '';
@@ -63,26 +63,28 @@ export interface ContentBlockTextBlock extends Schema.Component {
     icon: 'write';
   };
   attributes: {
-    text: Attribute.RichText;
+    text: Schema.Attribute.RichText;
   };
 }
 
-export interface UtilitySeo extends Schema.Component {
+export interface UtilitySeo extends Struct.ComponentSchema {
   collectionName: 'components_utility_seos';
   info: {
     displayName: 'seo';
     icon: 'search';
   };
   attributes: {
-    metaDescription: Attribute.Text;
-    metaTitle: Attribute.String;
-    shareImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    metaDescription: Schema.Attribute.Text;
+    metaTitle: Schema.Attribute.String;
+    shareImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
   };
 }
 
-declare module '@strapi/types' {
-  export module Shared {
-    export interface Components {
+declare module '@strapi/strapi' {
+  export module Public {
+    export interface ComponentSchemas {
       'collections.album': CollectionsAlbum;
       'content-block.heading-block': ContentBlockHeadingBlock;
       'content-block.image-block': ContentBlockImageBlock;

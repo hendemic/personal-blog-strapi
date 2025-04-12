@@ -4,6 +4,11 @@ module.exports = ({ env }) => ({
       jwtSecret: env('JWT_SECRET'),
     },
   },
+  graphql: {
+    config: {
+      v4ComptabilityMode: false
+    }
+  },
   upload: {
     config: {
       provider: "aws-s3",

@@ -39,6 +39,17 @@
       "type": "component",
       "repeatable": false,
       "component": "utility.seo"
+    },
+    "visible": {
+      "type": "boolean"
+    },
+    "tag": {
+      "type": "enumeration",
+      "enum": [
+        "travel",
+        "outdoor rec",
+        "daily life"
+      ]
     }
   }
 }

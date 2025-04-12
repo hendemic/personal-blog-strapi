@@ -33,6 +33,15 @@ module.exports = ({ env }) => ({
         uploadStream: {},
         delete: {},
       },
+      // Configure additional image formats to be generated
+      breakpoints: {
+        xlarge: 2000,
+        large: 1200,
+        medium: 800,
+        small: 500,
+        xsmall: 300,
+        thumbnail: 150,
+      },
     },
   },
 });

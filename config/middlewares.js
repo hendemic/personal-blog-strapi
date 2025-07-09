@@ -40,6 +40,8 @@ module.exports = [
         "http://127.0.0.1:3001",
         "https://personal-blog-frontend-two.vercel.app",
         "https://personal-blog-frontend-hendemics-projects.vercel.app",
+        "https://dopelife.life",
+        "https://www.dopelife.life",
       ],
       methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
       credentials: true,
